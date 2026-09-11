@@ -916,10 +916,13 @@ button,input {
   .portrait-composition { align-self:end; }
 }
 @media(max-width:1099px) {
-  .portrait-pot { width:120px;left:-10px;bottom:-9px; }
+  /* Reserve space beside the frame so foliage cannot cover the portrait. */
+  .portrait-composition { max-width:400px;padding-inline:0;display:grid;grid-template-columns:24% minmax(0,1fr); }
+  .portrait-composition__frame { grid-column:2; }
+  .portrait-pot { width:calc(24% - 8px);left:0;bottom:-6px; }
 }
 @media(max-width:599px) {
-  .portrait-pot { width:100px;left:-10px;bottom:-8px; }
+  .portrait-composition { padding-top:12px; }
 }
 
 /* Section names use the same display hierarchy as Independent projects. */
