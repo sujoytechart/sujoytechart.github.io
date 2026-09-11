@@ -977,15 +977,9 @@ button,input {
     transform:none;
     mix-blend-mode:multiply;
   }
-  /* Frame the downloaded artwork without modifying the source image. */
-  .identity__logo img {
-    position:absolute;
-    width:178.13%;
-    max-width:none;
-    height:auto;
-    left:-38.64%;
-    top:-97.14%;
-  }
+  .identity__logo-vector { display:block;width:100%;height:100%; }
+  .identity__logo-s { fill:var(--signal); }
+  .identity__logo-d { fill:var(--repository-surface); }
 }
 
 /* Clip the glass layers to the same curve, including the grid backdrop. */
