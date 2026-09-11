@@ -905,10 +905,15 @@ button,input {
   width:156px;
   left:-86px;
   /* The asset includes a small floor margin below the ceramic pot. */
-  bottom:-12px;
+  bottom:0;
+  transform:translateY(5.2%);
   height:auto;
   z-index:1;
-  mix-blend-mode:multiply;
+  /* The luminance mask removes only the background, preserving opaque foliage. */
+  mask-image:url("white-pot-plant-mask.png");
+  mask-mode:luminance;
+  mask-size:100% 100%;
+  mask-repeat:no-repeat;
   pointer-events:none;
 }
 @media(min-width:1100px) {
@@ -916,10 +921,10 @@ button,input {
   .portrait-composition { align-self:end; }
 }
 @media(max-width:1099px) {
-  /* Reserve space beside the frame so foliage cannot cover the portrait. */
+  /* Scale the desktop composition: pot beside the frame, foliage just in front. */
   .portrait-composition { max-width:400px;padding-inline:0;display:grid;grid-template-columns:24% minmax(0,1fr); }
   .portrait-composition__frame { grid-column:2; }
-  .portrait-pot { width:calc(24% - 8px);left:0;bottom:-6px; }
+  .portrait-pot { width:28%;left:4%; }
 }
 @media(max-width:599px) {
   .portrait-composition { padding-top:12px; }
