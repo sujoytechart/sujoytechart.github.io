@@ -469,29 +469,29 @@
           <div class="proj__body">
             <div class="proj__txt">
               <div class="proj__title-row">
-                <h3 id="carrier-title">Carrier Risk Platform: score risk with what was knowable</h3>
-                <span class="project-status"><span aria-hidden="true"></span>In progress</span>
+                <h3 id="carrier-title">Carrier Risk Platform: from federal records to model scoring</h3>
               </div>
               <p>
-                I am building an end-to-end platform to help freight brokers assess carrier
-                safety risk before dispatch. The finished system will turn FMCSA inspection
-                and crash histories into reproducible features, trained risk models and an API
-                for scoring, using only information available at each decision date.
+                I built an end-to-end data and ML platform on federal trucking inspection
+                and crash records. It connects immutable snapshots and correction-aware
+                history to reproducible features, Airflow training workflows, an MLflow
+                model registry and a FastAPI scoring service.
               </p>
               <div class="proj__stats">
-                <span class="proj__stat"><b>2</b><span>Federal event feeds</span></span>
-                <span class="proj__stat"><b>2</b><span>Time checks per historical feature</span></span>
+                <span class="proj__stat"><b>49.0%</b><span>Average precision</span></span>
+                <span class="proj__stat"><b>233,291</b><span>Carriers in the test cohort</span></span>
               </div>
               <p class="proj__note">
-                Target design: inspection and crash histories, filtered by both event date
-                and reporting date.
+                Historical real-data experiment. Average precision exceeded the prior-crash
+                baseline of 40.2%. The model is registered and served as experimental.
               </p>
               <p>
-                The design preserves immutable snapshots and corrected event versions,
-                makes loads idempotent, and tests historical features for future-data leakage.
-                Training labels become eligible only after their outcome window has elapsed.
+                Replayed loads and backfills preserve the same event history. Blocking dbt
+                tests check chronology, corrected versions and historical features. I verified
+                the history models and temporal checks on both PostgreSQL and Snowflake,
+                with AWS infrastructure provisioned through Terraform.
               </p>
-              <div class="tags" aria-label="Planned platform stack">
+              <div class="tags" aria-label="Platform stack">
                 <span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">dbt-core</span><span class="tag">Postgres</span><span class="tag">Snowflake</span><span class="tag">MLflow</span><span class="tag">FastAPI</span><span class="tag">Terraform</span><span class="tag">AWS</span>
               </div>
               <details class="proj__detail">
@@ -499,17 +499,17 @@
                 <p>
                   A crash may happen before a scoring date but appear in federal data weeks
                   later. Filtering only by event date would let the model use information that
-                  was not yet available. The design checks both dates and preserves corrected
-                  versions so historical predictions can use the record knowable at the time.
+                  was not yet available. The platform checks both dates and preserves corrected
+                  versions to reconstruct the history captured by retained snapshots.
                   Present-day carrier attributes are excluded where no historical archive is available.
                 </p>
               </details>
             </div>
-            <ol class="pflow" aria-label="Target architecture for the platform in progress">
+            <ol class="pflow" aria-label="Implemented Carrier Risk Platform flow">
               <li class="pnode"><b>Ingest</b><span>immutable FMCSA snapshots</span></li>
               <li class="pnode"><b>Model data</b><span>versioned history + features</span></li>
-              <li class="pnode"><b>Train</b><span>mature labels + MLflow</span></li>
-              <li class="pnode"><b>Serve</b><span>risk scores through FastAPI</span></li>
+              <li class="pnode"><b>Train</b><span>real-data model + MLflow</span></li>
+              <li class="pnode"><b>Serve</b><span>experimental scoring API</span></li>
             </ol>
           </div>
           </article>
