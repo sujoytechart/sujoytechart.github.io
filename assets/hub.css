@@ -1187,3 +1187,33 @@ button,input {
   white-space:nowrap;
 }
 .projects--public a.proj__go:hover { background:var(--repository-hover); }
+
+/* Availability is a static statement, not an interactive control. */
+.availability {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:fit-content;
+  margin:0;
+  padding:10px 20px;
+  border:1px solid var(--progress-halo);
+  border-radius:999px;
+  background:var(--availability-surface);
+  box-shadow:0 4px 18px var(--progress-halo), inset 0 1px 0 var(--ink-2);
+  color:var(--paper);
+  font-size:1rem;
+  font-weight:600;
+  line-height:1.5;
+  backdrop-filter:blur(12px);
+}
+.availability__light {
+  width:10px;
+  height:10px;
+  flex:none;
+  border-radius:50%;
+  background:var(--progress-light);
+  box-shadow:0 0 0 5px var(--progress-halo);
+}
+
+/* Leave breathing room between availability and the specialty list. */
+.availability + .hero__position { margin-top:24px; }
